@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 204 17% 96%; /* #ECF0F1 */
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 207 68% 53%; /* #3498DB */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 145 63% 49%; /* #2ECC71 */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 207 68% 53%;
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 207 68% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 145 63% 49%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 22%;
+    --input: 217 33% 22%;
+    --ring: 207 68% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  @media print {
+    body {
+      background-color: #fff !important;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .print-hidden {
+      display: none !important;
+    }
+
+    body * {
+      visibility: hidden;
+    }
+
+    .printable-area, .printable-area * {
+      visibility: visible;
+    }
+
+    .printable-area {
+      font-family: monospace; /* For receipt look */
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+      font-size: 10pt; /* Adjust for receipt printers */
+    }
+
+    .printable-area .p-6, .printable-area .p-4 {
+      padding: 0.5rem; /* Reduce padding for printing */
+    }
+
+     .printable-area h1, .printable-area h2, .printable-area h3, .printable-area .text-2xl, .printable-area .text-xl, .printable-area .text-lg, .printable-area .text-4xl, .printable-area .underline {
+      font-size: 12pt;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .printable-area .border-dashed {
+        border-style: dashed !important;
+        border-color: #000 !important;
+    }
+    
+    .printable-area img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+}
