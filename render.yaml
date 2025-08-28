@@ -34,9 +34,7 @@ services:
         value: production
     healthCheckPath: /health
 
-  # Database
-  - type: pserv
-    name: municollect-db
-    env: postgresql
+databases:
+  - name: municollect-db
     region: singapore
     plan: starter
