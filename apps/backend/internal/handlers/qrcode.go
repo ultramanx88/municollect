@@ -200,8 +200,7 @@ func (h *QRCodeHandler) GetQRCodeByPayment(c *fiber.Ctx) error {
 		})
 	}
 
-	// Get user ID from context for authorization
-	userID := c.Locals("userID").(string)
+	// Get user role from context for authorization
 	userRole := c.Locals("userRole").(string)
 
 	// Check if user has access to this payment

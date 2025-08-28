@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/go-playground/validator/v10"
@@ -20,17 +19,7 @@ const (
 	UserRoleAdmin          UserRole = "admin"
 )
 
-// User represents a user in the system (simplified for auth handler)
-type User struct {
-	ID        string    `json:"id" gorm:"primaryKey;type:uuid;default:gen_random_uuid()"`
-	Email     string    `json:"email" gorm:"uniqueIndex:idx_users_email;not null;size:255"`
-	FirstName string    `json:"firstName" gorm:"column:first_name;not null;size:100"`
-	LastName  string    `json:"lastName" gorm:"column:last_name;not null;size:100"`
-	Phone     *string   `json:"phone,omitempty" gorm:"size:20"`
-	Role      UserRole  `json:"role" gorm:"type:varchar(20);default:resident"`
-	CreatedAt time.Time `json:"createdAt" gorm:"column:created_at;autoCreateTime"`
-	UpdatedAt time.Time `json:"updatedAt" gorm:"column:updated_at;autoUpdateTime"`
-}
+
 
 // Auth represents user authentication data
 type Auth struct {
@@ -74,10 +63,10 @@ type LoginRequest struct {
 
 // AuthResponse represents the authentication response
 type AuthResponse struct {
-	AccessToken  string    `json:"accessToken"`
-	RefreshToken string    `json:"refreshToken"`
-	User         User      `json:"user"`
-	ExpiresAt    time.Time `json:"expiresAt"`
+	AccessToken  string      `json:"accessToken"`
+	RefreshToken string      `json:"refreshToken"`
+	User         models.User `json:"user"`
+	ExpiresAt    time.Time   `json:"expiresAt"`
 }
 
 // RefreshTokenRequest represents the refresh token request
@@ -394,7 +383,7 @@ func (h *AuthHandler) GetProfile(c *fiber.Ctx) error {
 	}
 	
 	// Get user from database
-	var user User
+	var user models.User
 	if err := h.db.Where("id = ?", userID).First(&user).Error; err != nil {
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
 			"error": "User not found",
