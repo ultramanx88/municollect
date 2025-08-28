@@ -1,10 +1,13 @@
 import { z } from 'zod';
 
+// Export localization validators
+export * from './localization';
+
 // Base validation schemas
 export const UUIDSchema = z.string().uuid();
 export const EmailSchema = z.string().email();
 export const PhoneSchema = z.string().regex(/^\+?[\d\s\-\(\)]+$/).optional();
-export const CurrencySchema = z.enum(['USD', 'EUR', 'GBP']);
+export const CurrencySchema = z.enum(['USD', 'EUR', 'GBP', 'THB']);
 export const ServiceTypeSchema = z.enum(['waste_management', 'water_bill']);
 export const PaymentStatusSchema = z.enum(['pending', 'completed', 'failed', 'expired']);
 export const UserRoleSchema = z.enum(['resident', 'municipal_staff', 'admin']);

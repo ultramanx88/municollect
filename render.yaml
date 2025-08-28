@@ -1,0 +1,44 @@
+services:
+  # Frontend Service (Next.js)
+  - type: web
+    name: municollect-frontend
+    env: node
+    region: singapore
+    buildCommand: |
+      npm ci
+      npm run shared:build
+      npm run build --filter=frontend
+    startCommand: npm run start --filter=frontend
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /
+
+  # Backend Service (Go)
+  - type: web
+    name: municollect-backend
+    env: go
+    region: singapore
+    buildCommand: |
+      cd apps/backend
+      go mod download
+      go build -o bin/server ./cmd/server
+    startCommand: |
+      cd apps/backend && ./bin/server
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: GO_ENV
+        value: production
+    healthCheckPath: /health
+
+  # Database
+  - type: pserv
+    name: municollect-db
+    env: postgresql
+    region: singapore
+    plan: starter
+    databaseName: municollect
+    databaseUser: municollect_user

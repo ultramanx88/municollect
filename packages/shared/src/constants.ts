@@ -1,5 +1,8 @@
 // Application constants
 
+// Export constants from subdirectories
+export * from './constants';
+
 // Service types
 export const SERVICE_TYPES = {
   WASTE_MANAGEMENT: 'waste_management',
@@ -42,6 +45,7 @@ export const CURRENCIES = {
   USD: 'USD',
   EUR: 'EUR',
   GBP: 'GBP',
+  THB: 'THB',
 } as const;
 
 // API endpoints
@@ -74,6 +78,9 @@ export const API_ENDPOINTS = {
   NOTIFICATIONS_SEND: '/api/notifications/send',
   NOTIFICATIONS_HISTORY: '/api/notifications/history',
   NOTIFICATION_READ: '/api/notifications/:id/read',
+  
+  // Localization
+  LOCALIZATION_CONFIG: '/api/localization/config',
 } as const;
 
 // Validation limits

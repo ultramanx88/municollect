@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: municollect-frontend
+    env: node
+    buildCommand: |
+      npm ci
+      npm run shared:build
+      npm run build --filter=frontend
+    startCommand: npm run start --filter=frontend
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /

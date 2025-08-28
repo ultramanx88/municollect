@@ -1,12 +1,28 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateMunicipalityCode = exports.validateQRCodeExpiration = exports.validatePaymentAmount = exports.ApiResponseSchema = exports.PaginationSchema = exports.MarkNotificationReadRequestSchema = exports.NotificationListRequestSchema = exports.NotificationRequestSchema = exports.NotificationSchema = exports.QRCodeValidationRequestSchema = exports.QRCodeRequestSchema = exports.QRCodeDataSchema = exports.PaymentStatusUpdateSchema = exports.PaymentHistoryRequestSchema = exports.PaymentSchema = exports.PaymentRequestSchema = exports.MunicipalityRequestSchema = exports.MunicipalitySchema = exports.PaymentConfigSchema = exports.UpdateProfileRequestSchema = exports.RefreshTokenRequestSchema = exports.LoginRequestSchema = exports.RegisterRequestSchema = exports.UserSchema = exports.UserDetailsSchema = exports.NotificationStatusSchema = exports.NotificationTypeSchema = exports.UserRoleSchema = exports.PaymentStatusSchema = exports.ServiceTypeSchema = exports.CurrencySchema = exports.PhoneSchema = exports.EmailSchema = exports.UUIDSchema = void 0;
 const zod_1 = require("zod");
+// Export localization validators
+__exportStar(require("./localization"), exports);
 // Base validation schemas
 exports.UUIDSchema = zod_1.z.string().uuid();
 exports.EmailSchema = zod_1.z.string().email();
 exports.PhoneSchema = zod_1.z.string().regex(/^\+?[\d\s\-\(\)]+$/).optional();
-exports.CurrencySchema = zod_1.z.enum(['USD', 'EUR', 'GBP']);
+exports.CurrencySchema = zod_1.z.enum(['USD', 'EUR', 'GBP', 'THB']);
 exports.ServiceTypeSchema = zod_1.z.enum(['waste_management', 'water_bill']);
 exports.PaymentStatusSchema = zod_1.z.enum(['pending', 'completed', 'failed', 'expired']);
 exports.UserRoleSchema = zod_1.z.enum(['resident', 'municipal_staff', 'admin']);

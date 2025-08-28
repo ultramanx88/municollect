@@ -1,4 +1,5 @@
 export * from './common';
+export * from './localization';
 export type UserRole = 'resident' | 'municipal_staff' | 'admin';
 export interface User {
     id: string;
@@ -35,7 +36,7 @@ export interface Municipality {
 }
 export type ServiceType = 'waste_management' | 'water_bill';
 export type PaymentStatus = 'pending' | 'completed' | 'failed' | 'expired';
-export type Currency = 'USD' | 'EUR' | 'GBP';
+export type Currency = 'USD' | 'EUR' | 'GBP' | 'THB';
 export interface Payment {
     id: string;
     municipalityId: string;

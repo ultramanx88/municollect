@@ -1,6 +1,9 @@
 // API contract interfaces
 import { ServiceType, Currency, PaymentStatus, UserDetails, User, Payment, Municipality, Notification, QRCodeData } from '../types';
 
+// Export localization interfaces
+export * from './localization';
+
 // Authentication interfaces
 export interface RegisterRequest {
   email: string;

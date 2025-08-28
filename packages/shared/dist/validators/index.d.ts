@@ -1,8 +1,9 @@
 import { z } from 'zod';
+export * from './localization';
 export declare const UUIDSchema: z.ZodString;
 export declare const EmailSchema: z.ZodString;
 export declare const PhoneSchema: z.ZodOptional<z.ZodString>;
-export declare const CurrencySchema: z.ZodEnum<["USD", "EUR", "GBP"]>;
+export declare const CurrencySchema: z.ZodEnum<["USD", "EUR", "GBP", "THB"]>;
 export declare const ServiceTypeSchema: z.ZodEnum<["waste_management", "water_bill"]>;
 export declare const PaymentStatusSchema: z.ZodEnum<["pending", "completed", "failed", "expired"]>;
 export declare const UserRoleSchema: z.ZodEnum<["resident", "municipal_staff", "admin"]>;
@@ -34,19 +35,19 @@ export declare const UserSchema: z.ZodObject<{
     createdAt: z.ZodDate;
     updatedAt: z.ZodDate;
 }, "strip", z.ZodTypeAny, {
+    id: string;
     firstName: string;
     lastName: string;
     email: string;
-    id: string;
     role: "resident" | "municipal_staff" | "admin";
     createdAt: Date;
     updatedAt: Date;
     phone?: string | undefined;
 }, {
+    id: string;
     firstName: string;
     lastName: string;
     email: string;
-    id: string;
     role: "resident" | "municipal_staff" | "admin";
     createdAt: Date;
     updatedAt: Date;
@@ -96,28 +97,28 @@ export declare const UpdateProfileRequestSchema: z.ZodObject<{
     lastName: z.ZodOptional<z.ZodString>;
     phone: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
+    phone?: string | undefined;
     firstName?: string | undefined;
     lastName?: string | undefined;
-    phone?: string | undefined;
 }, {
+    phone?: string | undefined;
     firstName?: string | undefined;
     lastName?: string | undefined;
-    phone?: string | undefined;
 }>;
 export declare const PaymentConfigSchema: z.ZodObject<{
     wasteManagementFee: z.ZodOptional<z.ZodNumber>;
     waterBillEnabled: z.ZodOptional<z.ZodBoolean>;
-    currency: z.ZodEnum<["USD", "EUR", "GBP"]>;
+    currency: z.ZodEnum<["USD", "EUR", "GBP", "THB"]>;
     paymentMethods: z.ZodArray<z.ZodString, "many">;
     qrCodeExpirationMinutes: z.ZodDefault<z.ZodNumber>;
 }, "strip", z.ZodTypeAny, {
-    currency: "USD" | "EUR" | "GBP";
+    currency: "USD" | "EUR" | "GBP" | "THB";
     paymentMethods: string[];
     qrCodeExpirationMinutes: number;
     wasteManagementFee?: number | undefined;
     waterBillEnabled?: boolean | undefined;
 }, {
-    currency: "USD" | "EUR" | "GBP";
+    currency: "USD" | "EUR" | "GBP" | "THB";
     paymentMethods: string[];
     wasteManagementFee?: number | undefined;
     waterBillEnabled?: boolean | undefined;
@@ -132,17 +133,17 @@ export declare const MunicipalitySchema: z.ZodObject<{
     paymentConfig: z.ZodOptional<z.ZodObject<{
         wasteManagementFee: z.ZodOptional<z.ZodNumber>;
         waterBillEnabled: z.ZodOptional<z.ZodBoolean>;
-        currency: z.ZodEnum<["USD", "EUR", "GBP"]>;
+        currency: z.ZodEnum<["USD", "EUR", "GBP", "THB"]>;
         paymentMethods: z.ZodArray<z.ZodString, "many">;
         qrCodeExpirationMinutes: z.ZodDefault<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
-        currency: "USD" | "EUR" | "GBP";
+        currency: "USD" | "EUR" | "GBP" | "THB";
         paymentMethods: string[];
         qrCodeExpirationMinutes: number;
         wasteManagementFee?: number | undefined;
         waterBillEnabled?: boolean | undefined;
     }, {
-        currency: "USD" | "EUR" | "GBP";
+        currency: "USD" | "EUR" | "GBP" | "THB";
         paymentMethods: string[];
         wasteManagementFee?: number | undefined;
         waterBillEnabled?: boolean | undefined;
@@ -152,14 +153,14 @@ export declare const MunicipalitySchema: z.ZodObject<{
     updatedAt: z.ZodDate;
 }, "strip", z.ZodTypeAny, {
     code: string;
+    name: string;
     id: string;
     createdAt: Date;
     updatedAt: Date;
-    name: string;
     contactEmail?: string | undefined;
     contactPhone?: string | undefined;
     paymentConfig?: {
-        currency: "USD" | "EUR" | "GBP";
+        currency: "USD" | "EUR" | "GBP" | "THB";
         paymentMethods: string[];
         qrCodeExpirationMinutes: number;
         wasteManagementFee?: number | undefined;
@@ -167,14 +168,14 @@ export declare const MunicipalitySchema: z.ZodObject<{
     } | undefined;
 }, {
     code: string;
+    name: string;
     id: string;
     createdAt: Date;
     updatedAt: Date;
-    name: string;
     contactEmail?: string | undefined;
     contactPhone?: string | undefined;
     paymentConfig?: {
-        currency: "USD" | "EUR" | "GBP";
+        currency: "USD" | "EUR" | "GBP" | "THB";
         paymentMethods: string[];
         wasteManagementFee?: number | undefined;
         waterBillEnabled?: boolean | undefined;
@@ -204,7 +205,7 @@ export declare const PaymentRequestSchema: z.ZodObject<{
     municipalityId: z.ZodString;
     serviceType: z.ZodEnum<["waste_management", "water_bill"]>;
     amount: z.ZodNumber;
-    currency: z.ZodEnum<["USD", "EUR", "GBP"]>;
+    currency: z.ZodEnum<["USD", "EUR", "GBP", "THB"]>;
     userDetails: z.ZodObject<{
         firstName: z.ZodString;
         lastName: z.ZodString;
@@ -224,7 +225,7 @@ export declare const PaymentRequestSchema: z.ZodObject<{
     dueDate: z.ZodOptional<z.ZodDate>;
 }, "strip", z.ZodTypeAny, {
     municipalityId: string;
-    currency: "USD" | "EUR" | "GBP";
+    currency: "USD" | "EUR" | "GBP" | "THB";
     serviceType: "waste_management" | "water_bill";
     amount: number;
     userDetails: {
@@ -236,7 +237,7 @@ export declare const PaymentRequestSchema: z.ZodObject<{
     dueDate?: Date | undefined;
 }, {
     municipalityId: string;
-    currency: "USD" | "EUR" | "GBP";
+    currency: "USD" | "EUR" | "GBP" | "THB";
     serviceType: "waste_management" | "water_bill";
     amount: number;
     userDetails: {
@@ -253,7 +254,7 @@ export declare const PaymentSchema: z.ZodObject<{
     userId: z.ZodString;
     serviceType: z.ZodEnum<["waste_management", "water_bill"]>;
     amount: z.ZodNumber;
-    currency: z.ZodEnum<["USD", "EUR", "GBP"]>;
+    currency: z.ZodEnum<["USD", "EUR", "GBP", "THB"]>;
     status: z.ZodEnum<["pending", "completed", "failed", "expired"]>;
     qrCode: z.ZodOptional<z.ZodString>;
     dueDate: z.ZodOptional<z.ZodDate>;
@@ -266,7 +267,7 @@ export declare const PaymentSchema: z.ZodObject<{
     createdAt: Date;
     updatedAt: Date;
     municipalityId: string;
-    currency: "USD" | "EUR" | "GBP";
+    currency: "USD" | "EUR" | "GBP" | "THB";
     serviceType: "waste_management" | "water_bill";
     amount: number;
     userId: string;
@@ -279,7 +280,7 @@ export declare const PaymentSchema: z.ZodObject<{
     createdAt: Date;
     updatedAt: Date;
     municipalityId: string;
-    currency: "USD" | "EUR" | "GBP";
+    currency: "USD" | "EUR" | "GBP" | "THB";
     serviceType: "waste_management" | "water_bill";
     amount: number;
     userId: string;
@@ -329,19 +330,19 @@ export declare const QRCodeDataSchema: z.ZodObject<{
     paymentId: z.ZodString;
     municipalityId: z.ZodString;
     amount: z.ZodNumber;
-    currency: z.ZodEnum<["USD", "EUR", "GBP"]>;
+    currency: z.ZodEnum<["USD", "EUR", "GBP", "THB"]>;
     serviceType: z.ZodEnum<["waste_management", "water_bill"]>;
     expiresAt: z.ZodDate;
 }, "strip", z.ZodTypeAny, {
     municipalityId: string;
-    currency: "USD" | "EUR" | "GBP";
+    currency: "USD" | "EUR" | "GBP" | "THB";
     serviceType: "waste_management" | "water_bill";
     amount: number;
     paymentId: string;
     expiresAt: Date;
 }, {
     municipalityId: string;
-    currency: "USD" | "EUR" | "GBP";
+    currency: "USD" | "EUR" | "GBP" | "THB";
     serviceType: "waste_management" | "water_bill";
     amount: number;
     paymentId: string;

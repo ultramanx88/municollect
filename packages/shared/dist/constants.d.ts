@@ -1,3 +1,4 @@
+export * from './constants';
 export declare const SERVICE_TYPES: {
     readonly WASTE_MANAGEMENT: "waste_management";
     readonly WATER_BILL: "water_bill";
@@ -29,6 +30,7 @@ export declare const CURRENCIES: {
     readonly USD: "USD";
     readonly EUR: "EUR";
     readonly GBP: "GBP";
+    readonly THB: "THB";
 };
 export declare const API_ENDPOINTS: {
     readonly AUTH_REGISTER: "/api/auth/register";
@@ -48,6 +50,7 @@ export declare const API_ENDPOINTS: {
     readonly NOTIFICATIONS_SEND: "/api/notifications/send";
     readonly NOTIFICATIONS_HISTORY: "/api/notifications/history";
     readonly NOTIFICATION_READ: "/api/notifications/:id/read";
+    readonly LOCALIZATION_CONFIG: "/api/localization/config";
 };
 export declare const VALIDATION_LIMITS: {
     readonly PASSWORD_MIN_LENGTH: 6;

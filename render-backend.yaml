@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: municollect-backend
+    env: go
+    buildCommand: |
+      cd apps/backend
+      go mod download
+      go build -o bin/server ./cmd/server
+    startCommand: |
+      cd apps/backend && ./bin/server
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: GO_ENV
+        value: production
+    healthCheckPath: /health

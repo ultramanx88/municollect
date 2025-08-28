@@ -3,6 +3,9 @@
 // Export common utility types
 export * from './common';
 
+// Export localization types
+export * from './localization';
+
 // User types
 export type UserRole = 'resident' | 'municipal_staff' | 'admin';
 
@@ -47,7 +50,7 @@ export interface Municipality {
 // Payment types
 export type ServiceType = 'waste_management' | 'water_bill';
 export type PaymentStatus = 'pending' | 'completed' | 'failed' | 'expired';
-export type Currency = 'USD' | 'EUR' | 'GBP';
+export type Currency = 'USD' | 'EUR' | 'GBP' | 'THB';
 
 export interface Payment {
   id: string;

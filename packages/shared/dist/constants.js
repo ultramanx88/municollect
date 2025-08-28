@@ -1,7 +1,23 @@
 "use strict";
 // Application constants
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HTTP_STATUS = exports.ERROR_CODES = exports.VALIDATION_LIMITS = exports.API_ENDPOINTS = exports.CURRENCIES = exports.NOTIFICATION_STATUSES = exports.NOTIFICATION_TYPES = exports.USER_ROLES = exports.PAYMENT_STATUSES = exports.SERVICE_TYPES = void 0;
+// Export constants from subdirectories
+__exportStar(require("./constants"), exports);
 // Service types
 exports.SERVICE_TYPES = {
     WASTE_MANAGEMENT: 'waste_management',
@@ -39,6 +55,7 @@ exports.CURRENCIES = {
     USD: 'USD',
     EUR: 'EUR',
     GBP: 'GBP',
+    THB: 'THB',
 };
 // API endpoints
 exports.API_ENDPOINTS = {
@@ -65,6 +82,8 @@ exports.API_ENDPOINTS = {
     NOTIFICATIONS_SEND: '/api/notifications/send',
     NOTIFICATIONS_HISTORY: '/api/notifications/history',
     NOTIFICATION_READ: '/api/notifications/:id/read',
+    // Localization
+    LOCALIZATION_CONFIG: '/api/localization/config',
 };
 // Validation limits
 exports.VALIDATION_LIMITS = {

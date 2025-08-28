@@ -17,3 +17,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // Export common utility types
 __exportStar(require("./common"), exports);
+// Export localization types
+__exportStar(require("./localization"), exports);

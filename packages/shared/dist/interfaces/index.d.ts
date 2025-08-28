@@ -1,4 +1,5 @@
 import { ServiceType, Currency, PaymentStatus, UserDetails, User, Payment, Municipality, Notification, QRCodeData } from '../types';
+export * from './localization';
 export interface RegisterRequest {
     email: string;
     password: string;
