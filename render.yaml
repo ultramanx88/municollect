@@ -37,6 +37,6 @@ services:
   # Database
   - type: pserv
     name: municollect-db
-    databaseName: municollect
+    env: postgresql
     region: singapore
     plan: starter
