@@ -37,4 +37,4 @@ services:
 databases:
   - name: municollect-db
     region: singapore
-    plan: starter
+    plan: free
