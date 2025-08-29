@@ -11,7 +11,7 @@ import {
   useMunicipalities,
   useInitiatePayment 
 } from '../../hooks';
-import { LoginRequest, PaymentRequest } from '@municollect/shared';
+import { LoginRequest, PaymentRequest } from '@/shared';
 
 // Example: Login Form Component
 export function LoginExample() {

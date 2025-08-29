@@ -3,8 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "apps/*"
   ],
   "scripts": {
     "build": "turbo build",
@@ -14,8 +13,7 @@
     "test": "turbo test",
     "clean": "turbo clean",
     "frontend:dev": "turbo dev --filter=frontend",
-    "backend:dev": "turbo dev --filter=backend",
-    "shared:build": "turbo build --filter=shared"
+    "backend:dev": "turbo dev --filter=backend"
   },
 
   "devDependencies": {

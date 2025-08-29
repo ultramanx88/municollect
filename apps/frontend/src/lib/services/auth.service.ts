@@ -6,7 +6,7 @@ import {
   AuthResponse,
   RefreshTokenRequest,
   User
-} from '@municollect/shared';
+} from '@/shared';
 
 export class AuthService {
   /**

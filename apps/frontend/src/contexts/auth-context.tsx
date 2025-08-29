@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import { User, AuthResponse } from '@municollect/shared';
+import { User, AuthResponse } from '@/shared';
 import { authService } from '@/lib/services';
 import { useToast } from '@/hooks/use-toast';
 

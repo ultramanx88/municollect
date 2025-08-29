@@ -5,7 +5,7 @@ import {
   QRCodeResponse,
   QRCodeValidationRequest,
   QRCodeValidationResponse
-} from '@municollect/shared';
+} from '@/shared';
 
 export class QRService {
   /**

@@ -5,7 +5,7 @@ import {
   NotificationListRequest,
   NotificationListResponse,
   Notification
-} from '@municollect/shared';
+} from '@/shared';
 
 /**
  * Hook for fetching notification history

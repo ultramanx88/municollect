@@ -7,7 +7,7 @@ import {
   NotificationListResponse,
   MarkNotificationReadRequest,
   Notification
-} from '@municollect/shared';
+} from '@/shared';
 
 export class NotificationService {
   /**

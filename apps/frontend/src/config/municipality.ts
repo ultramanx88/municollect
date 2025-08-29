@@ -1,4 +1,4 @@
-import { Municipality } from '@municollect/shared';
+import { Municipality } from '@/shared';
 
 export interface MunicipalityConfig {
   name: string;

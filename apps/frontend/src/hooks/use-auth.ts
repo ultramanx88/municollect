@@ -11,7 +11,7 @@ import {
   RegisterRequest, 
   LoginRequest, 
   AuthResponse 
-} from '@municollect/shared';
+} from '@/shared';
 
 /**
  * @deprecated Use useAuth() context hook instead

@@ -5,7 +5,7 @@ import {
   MunicipalityResponse,
   MunicipalityListResponse,
   Municipality
-} from '@municollect/shared';
+} from '@/shared';
 
 export class MunicipalityService {
   /**

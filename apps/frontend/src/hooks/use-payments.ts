@@ -8,7 +8,7 @@ import {
   PaymentHistoryResponse,
   Payment,
   ServiceType
-} from '@municollect/shared';
+} from '@/shared';
 
 /**
  * Hook for fetching available payment services

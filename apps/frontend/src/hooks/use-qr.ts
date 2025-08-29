@@ -5,7 +5,7 @@ import {
   QRCodeValidationRequest,
   QRCodeResponse,
   QRCodeValidationResponse
-} from '@municollect/shared';
+} from '@/shared';
 
 /**
  * Hook for generating QR codes

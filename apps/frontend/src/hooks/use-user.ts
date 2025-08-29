@@ -5,7 +5,7 @@ import {
   UserProfileResponse,
   User,
   Municipality
-} from '@municollect/shared';
+} from '@/shared';
 
 /**
  * Hook for fetching user profile

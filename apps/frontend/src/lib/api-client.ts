@@ -1,4 +1,4 @@
-import { API_ENDPOINTS, HTTP_STATUS, ERROR_CODES } from '@municollect/shared';
+import { API_ENDPOINTS, HTTP_STATUS, ERROR_CODES } from '@/shared';
 
 // Custom error classes
 export class ApiError extends Error {

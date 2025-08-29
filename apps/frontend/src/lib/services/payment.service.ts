@@ -8,7 +8,7 @@ import {
   PaymentStatusUpdate,
   Payment,
   ServiceType
-} from '@municollect/shared';
+} from '@/shared';
 
 export class PaymentService {
   /**

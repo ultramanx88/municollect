@@ -3,7 +3,7 @@ import { useQuery, useMutation } from './use-api';
 import { 
   MunicipalityRequest,
   Municipality
-} from '@municollect/shared';
+} from '@/shared';
 
 /**
  * Hook for fetching all municipalities

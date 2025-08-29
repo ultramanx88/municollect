@@ -1,5 +1,5 @@
 import { ApiError, NetworkError, ValidationError } from './api-client';
-import { ERROR_CODES, HTTP_STATUS } from '@municollect/shared';
+import { ERROR_CODES, HTTP_STATUS } from '@/shared';
 
 // Error handler configuration
 export interface ErrorHandlerConfig {

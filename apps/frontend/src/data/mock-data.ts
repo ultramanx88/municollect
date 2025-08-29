@@ -1,5 +1,5 @@
 
-import { User, Payment, ServiceType, PaymentStatus } from '@municollect/shared';
+import { User, Payment, ServiceType, PaymentStatus } from '@/shared';
 
 export type Resident = {
     id: string;
