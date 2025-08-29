@@ -1,8 +1,5 @@
 // Application constants
 
-// Export constants from subdirectories
-export * from './constants';
-
 // Service types
 export const SERVICE_TYPES = {
   WASTE_MANAGEMENT: 'waste_management',
