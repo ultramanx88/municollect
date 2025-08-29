@@ -5,9 +5,9 @@ services:
     env: node
     region: singapore
     buildCommand: |
-      npm ci
-      npm run shared:build
-      cd apps/frontend && npm run build
+      npm install
+      npm run build --workspace=@municollect/shared
+      npm run build --workspace=frontend
     startCommand: cd apps/frontend && npm run start
     envVars:
       - key: NODE_ENV
