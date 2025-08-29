@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   experimental: {
     outputFileTracingRoot: process.cwd(),
   },
-  transpilePackages: ['@municollect/shared'],
+
   typescript: {
     ignoreBuildErrors: true,
   },
