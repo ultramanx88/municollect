@@ -10,8 +10,8 @@
     "dev": "cd apps/frontend && npm run dev",
     "lint": "cd apps/frontend && npm run lint",
     "typecheck": "cd apps/frontend && npm run typecheck",
-    "frontend:dev": "turbo dev --filter=frontend",
-    "backend:dev": "turbo dev --filter=backend"
+    "frontend:dev": "cd apps/frontend && npm run dev",
+    "backend:dev": "cd apps/backend && go run cmd/server/main.go"
   },
 
   "devDependencies": {
