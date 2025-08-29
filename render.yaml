@@ -6,7 +6,8 @@ services:
     region: singapore
     buildCommand: |
       npm ci
-      npx turbo build --filter=@municollect/shared --filter=frontend
+      cd packages/shared && npm run build && cd ../..
+      cd apps/frontend && npm run build
     startCommand: cd apps/frontend && npm run start
     envVars:
       - key: NODE_ENV
