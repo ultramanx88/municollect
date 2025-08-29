@@ -6,18 +6,15 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "typecheck": "turbo typecheck",
-    "test": "turbo test",
-    "clean": "turbo clean",
+    "build": "cd apps/frontend && npm run build",
+    "dev": "cd apps/frontend && npm run dev",
+    "lint": "cd apps/frontend && npm run lint",
+    "typecheck": "cd apps/frontend && npm run typecheck",
     "frontend:dev": "turbo dev --filter=frontend",
     "backend:dev": "turbo dev --filter=backend"
   },
 
   "devDependencies": {
-    "turbo": "^2.3.0",
     "typescript": "^5"
   },
   "packageManager": "npm@10.0.0"
