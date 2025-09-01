@@ -5,10 +5,11 @@ services:
     env: node
     region: singapore
     buildCommand: |
-      npm install
+      npm ci
       cd apps/frontend
-      npx next build
-    startCommand: cd apps/frontend && npx next start
+      npm ci
+      npm run build
+    startCommand: cd apps/frontend && npm start
     envVars:
       - key: NODE_ENV
         value: production
