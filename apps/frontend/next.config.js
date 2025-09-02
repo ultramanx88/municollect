@@ -2,6 +2,7 @@ const path = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -19,20 +20,21 @@ const nextConfig = {
     ],
   },
   webpack: (config, { isServer }) => {
-    // Add path alias for @ symbol
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': path.resolve(__dirname, 'src'),
-    };
+    // Handle external dependencies that cause build issues
+    config.externals = config.externals || [];
+    if (isServer) {
+      config.externals.push('@opentelemetry/exporter-jaeger');
+    }
     
-    // Ignore warnings for missing modules
+    // Ignore handlebars require.extensions warnings
     config.ignoreWarnings = [
-      /Module not found/,
-      /Can't resolve/,
-      /require.extensions is not supported/,
+      /require\.extensions is not supported/,
+      /Module not found.*@opentelemetry\/exporter-jaeger/,
     ];
+    
     return config;
   },
+
 };
 
 module.exports = nextConfig;
