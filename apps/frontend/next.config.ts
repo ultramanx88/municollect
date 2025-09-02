@@ -18,6 +18,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  webpack: (config, { isServer }) => {
+    // Ignore warnings for missing modules
+    config.ignoreWarnings = [
+      /Module not found/,
+      /Can't resolve/,
+      /require.extensions is not supported/,
+    ];
+    return config;
+  },
 };
 
 export default nextConfig;
