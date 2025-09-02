@@ -4,11 +4,11 @@ services:
     name: municollect-frontend
     env: node
     region: singapore
-    rootDir: apps/frontend
     buildCommand: |
       npm install --force
-      npm run build
-    startCommand: npm start
+      cd apps/frontend && npm install --force
+      cd apps/frontend && npm run build
+    startCommand: cd apps/frontend && npm start
     envVars:
       - key: NODE_ENV
         value: production

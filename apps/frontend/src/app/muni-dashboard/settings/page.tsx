@@ -98,6 +98,17 @@ export default function MuniSettingsPage() {
                 </Card>
 
                 <div className="space-y-6">
+                    <Link href="/muni-dashboard/settings/branding" className="block">
+                        <Card className="hover:bg-secondary transition-colors h-full">
+                            <CardHeader>
+                                <CardTitle className="flex items-center gap-2"><Sparkles className="h-5 w-5" /> การตั้งค่าแบรนด์</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <CardDescription>จัดการโลโก้ ไอคอน และภาพพื้นหลังของระบบพร้อมตัวอย่างแบบเรียลไทม์</CardDescription>
+                            </CardContent>
+                        </Card>
+                    </Link>
+
                     <Link href="/muni-dashboard/settings/collection" className="block">
                         <Card className="hover:bg-secondary transition-colors h-full">
                             <CardHeader>

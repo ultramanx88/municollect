@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Superspace Fonts */
+@font-face {
+  font-family: Superspace-Regular;
+  src: url('/fonts/superspace/Superspace-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Superspace-Bold;
+  src: url('/fonts/superspace/Superspace-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Superspace-Light;
+  src: url('/fonts/superspace/Superspace-Light.ttf'); 
+}
+
 @layer base {
   :root {
     --background: 204 17% 96%; /* #ECF0F1 */
@@ -55,6 +71,339 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: Superspace-Regular, sans-serif;
+  }
+}
+
+/* Login Template Styles */
+@layer components {
+  .login-bg {
+    background-image: url('/bg-01.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+  }
+
+  .login-bg::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255,0.9);
+  }
+
+  .login-card {
+    background: #9152f8;
+    background: linear-gradient(135deg, #7579ff, #b224ef);
+    border-radius: 10px;
+    padding: 55px 55px 37px 55px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .login-form-logo {
+    font-size: 60px; 
+    color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 0 auto;
+  }
+
+  .login-form-title {
+    font-family: Superspace-Bold, sans-serif;
+    font-size: 30px;
+    color: #fff;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  .login-input-wrapper {
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid rgba(255,255,255,0.24);
+    margin-bottom: 30px;
+  }
+
+  .login-input {
+    font-family: Superspace-Regular, sans-serif;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.2;
+    display: block;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0 5px 0 38px;
+  }
+
+  .login-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .login-input:focus {
+    padding-left: 5px;
+  }
+
+  .login-input-focus {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+
+  .login-input-focus::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    transition: all 0.4s;
+    background: #fff;
+  }
+
+  .login-input:focus + .login-input-focus::before {
+    width: 100%;
+  }
+
+  .login-btn {
+    font-family: Superspace-Bold, sans-serif;
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 120px;
+    height: 50px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #7579ff, #b224ef);
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .login-btn::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: all 0.4s;
+  }
+
+  .login-btn:hover {
+    color: #fff;
+  }
+
+  .login-btn:hover::before {
+    opacity: 0;
+  }
+
+  .login-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+  }
+
+  @media (max-width: 576px) {
+    .login-card {
+      padding: 55px 15px 37px 15px;
+    }
+  }
+
+  /* Dashboard Styles */
+  .dashboard-wrapper {
+    font-family: Superspace-Regular, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.625;
+    color: #666;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .dashboard-wrapper h1,
+  .dashboard-wrapper h2,
+  .dashboard-wrapper h3,
+  .dashboard-wrapper h4,
+  .dashboard-wrapper h5,
+  .dashboard-wrapper h6 {
+    color: #333333;
+    font-family: Superspace-Bold, sans-serif;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .dashboard-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    border: none;
+  }
+
+  .dashboard-btn {
+    font-family: Superspace-Bold, sans-serif;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .dashboard-btn-primary {
+    background: linear-gradient(135deg, #4272d7, #3b5998);
+    color: #fff;
+  }
+
+  .dashboard-btn-primary:hover {
+    background: linear-gradient(135deg, #3b5998, #2d4373);
+    transform: translateY(-1px);
+  }
+
+  .dashboard-table {
+    font-family: Superspace-Regular, sans-serif;
+    margin: 0;
+    width: 100%;
+  }
+
+  .dashboard-table thead th {
+    background: #333;
+    color: #fff;
+    font-family: Superspace-Bold, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 20px;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .dashboard-table tbody td {
+    color: #666;
+    padding: 15px 20px;
+    border-top: none;
+    border-bottom: 1px solid #f2f2f2;
+    vertical-align: middle;
+  }
+
+  .dashboard-table tbody tr:hover {
+    background-color: #f8f9fa;
+  }
+
+  .dashboard-form-control {
+    font-family: Superspace-Regular, sans-serif;
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .dashboard-form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #4272d7;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(66, 114, 215, 0.25);
+  }
+
+  .dashboard-stats-card {
+    background: linear-gradient(135deg, #4272d7, #3b5998);
+    color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dashboard-stats-card .stats-number {
+    font-family: Superspace-Bold, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .dashboard-stats-card .stats-label {
+    font-family: Superspace-Regular, sans-serif;
+    font-size: 14px;
+    opacity: 0.9;
+  }
+
+  /* Font utility classes */
+  .font-superspace-regular {
+    font-family: Superspace-Regular, sans-serif;
+  }
+
+  .font-superspace-bold {
+    font-family: Superspace-Bold, sans-serif;
+  }
+
+  .font-superspace-light {
+    font-family: Superspace-Light, sans-serif;
+  }
+
+  /* Splash Screen Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .splash-fade-in {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .splash-fade-in-delay {
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+  }
+
+  .splash-fade-in-delay-2 {
+    animation: fadeInUp 0.8s ease-out 0.6s both;
   }
 }
 

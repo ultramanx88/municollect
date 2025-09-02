@@ -3,6 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { municipalityConfig } from '@/config/municipality';
 import { AuthProvider } from '@/contexts';
+import { BrandingProvider } from '@/contexts/BrandingContext';
 
 const APP_NAME = municipalityConfig.name;
 const APP_DESCRIPTION = `แอปพลิเคชันสำหรับบริการของ ${municipalityConfig.name}`;
@@ -47,10 +48,12 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        <AuthProvider>
-          {children}
-          <Toaster />
-        </AuthProvider>
+        <BrandingProvider>
+          <AuthProvider>
+            {children}
+            <Toaster />
+          </AuthProvider>
+        </BrandingProvider>
       </body>
     </html>
   );

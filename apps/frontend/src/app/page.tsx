@@ -5,16 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from "next/link";
 import { Mail, Lock, Home, Download } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+
 import { Logo } from "@/components/Logo";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { municipalityConfig } from '@/config/municipality';
@@ -117,105 +108,102 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-background p-4">
-      <Card className="w-full max-w-sm mx-auto">
-        <CardHeader className="text-center">
-          <div className="mb-4 inline-block">
+    <div className="login-bg flex items-center justify-center min-h-screen p-4">
+      <div className="login-card w-full max-w-md mx-auto">
+        <div className="text-center mb-8">
+          <div className="login-form-logo mb-6">
             <Logo src={logoUrl} />
           </div>
-          <CardTitle className="text-2xl">ยินดีต้อนรับสู่ MuniCollect</CardTitle>
-          <CardDescription>
-            <p>ระบบชำระค่าบริการสำหรับเทศบาล</p>
-            <p className="font-semibold text-foreground mt-1">{municipalityName}</p>
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
+          <h1 className="login-form-title mb-4">ยินดีต้อนรับสู่ MuniCollect</h1>
+          <p className="text-white/80 text-sm">ระบบชำระค่าบริการสำหรับเทศบาล</p>
+          <p className="text-white font-semibold mt-1">{municipalityName}</p>
+        </div>
+        <div>
            <Tabs defaultValue="resident" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="resident">สำหรับประชาชน</TabsTrigger>
-                <TabsTrigger value="municipality">สำหรับเทศบาล</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-2 bg-white/20 border-0">
+                <TabsTrigger value="resident" className="text-white data-[state=active]:bg-white data-[state=active]:text-gray-900">สำหรับประชาชน</TabsTrigger>
+                <TabsTrigger value="municipality" className="text-white data-[state=active]:bg-white data-[state=active]:text-gray-900">สำหรับเทศบาล</TabsTrigger>
               </TabsList>
-              <TabsContent value="resident" className="pt-4">
-                <form className="grid gap-4" onSubmit={handleResidentLogin}>
-                  <div className="grid gap-2">
-                    <Label htmlFor="household-id">รหัสประจำบ้าน</Label>
-                    <div className="relative">
-                      <Home className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input
-                        id="household-id"
-                        type="text"
-                        placeholder="กรอกรหัสประจำบ้านของคุณ"
-                        required
-                        className="pl-10"
-                        value={householdId}
-                        onChange={(e) => setHouseholdId(e.target.value)}
-                      />
-                    </div>
+              <TabsContent value="resident" className="pt-6">
+                <form className="space-y-6" onSubmit={handleResidentLogin}>
+                  <div className="login-input-wrapper">
+                    <Home className="login-icon" />
+                    <input
+                      id="household-id"
+                      type="text"
+                      placeholder="กรอกรหัสประจำบ้านของคุณ"
+                      required
+                      className="login-input"
+                      value={householdId}
+                      onChange={(e) => setHouseholdId(e.target.value)}
+                    />
+                    <span className="login-input-focus"></span>
                   </div>
-                  <Button type="submit" className="w-full">
-                    เข้าสู่ระบบ
-                  </Button>
+                  <div className="flex justify-center">
+                    <button type="submit" className="login-btn">
+                      เข้าสู่ระบบ
+                    </button>
+                  </div>
                 </form>
-                 <div className="mt-4 text-center text-sm">
-                  ยังไม่มีบัญชี?{" "}
-                  <Link href="/resident-register" className="underline">
+                 <div className="mt-6 text-center text-sm">
+                  <span className="text-white/80">ยังไม่มีบัญชี? </span>
+                  <Link href="/resident-register" className="text-white underline hover:text-white/80 transition-colors">
                     ลงทะเบียนที่นี่
                   </Link>
                 </div>
               </TabsContent>
-              <TabsContent value="municipality" className="pt-4">
-                 <form className="grid gap-4" onSubmit={handleMunicipalityLogin}>
-                  <div className="grid gap-2">
-                    <Label htmlFor="email">อีเมล</Label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="name@example.com"
-                        required
-                        className="pl-10"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </div>
+              <TabsContent value="municipality" className="pt-6">
+                 <form className="space-y-6" onSubmit={handleMunicipalityLogin}>
+                  <div className="login-input-wrapper">
+                    <Mail className="login-icon" />
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="name@example.com"
+                      required
+                      className="login-input"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <span className="login-input-focus"></span>
                   </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="password">รหัสผ่าน</Label>
-                    <div className="relative">
-                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input 
-                        id="password" 
-                        type="password" 
-                        required
-                        className="pl-10" 
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
+                  <div className="login-input-wrapper">
+                    <Lock className="login-icon" />
+                    <input 
+                      id="password" 
+                      type="password" 
+                      placeholder="รหัสผ่าน"
+                      required
+                      className="login-input" 
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <span className="login-input-focus"></span>
                   </div>
-                  <Button type="submit" className="w-full" disabled={isLoading}>
-                    {isLoading ? 'กำลังเข้าสู่ระบบ...' : 'เข้าสู่ระบบ'}
-                  </Button>
+                  <div className="flex justify-center">
+                    <button type="submit" className="login-btn" disabled={isLoading}>
+                      {isLoading ? 'กำลังเข้าสู่ระบบ...' : 'เข้าสู่ระบบ'}
+                    </button>
+                  </div>
                 </form>
-                <div className="mt-4 text-center text-sm">
-                  ยังไม่มีบัญชี?{" "}
-                  <Link href="/register" className="underline">
+                <div className="mt-6 text-center text-sm">
+                  <span className="text-white/80">ยังไม่มีบัญชี? </span>
+                  <Link href="/register" className="text-white underline hover:text-white/80 transition-colors">
                     ลงทะเบียนเทศบาล
                   </Link>
                 </div>
               </TabsContent>
             </Tabs>
           {installPrompt && !isPwaInstalled && (
-            <div className="mt-6 pt-4 border-t">
-               <Button onClick={handleInstallClick} className="w-full" variant="outline">
+            <div className="mt-6 pt-4 border-t border-white/20">
+               <button onClick={handleInstallClick} className="login-btn w-full">
                 <Download className="mr-2 h-4 w-4" />
                 ติดตั้งแอปพลิเคชัน
-              </Button>
+              </button>
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

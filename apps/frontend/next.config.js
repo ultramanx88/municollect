@@ -1,7 +1,7 @@
-import type {NextConfig} from 'next';
+const path = require('path');
 
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -19,6 +19,12 @@ const nextConfig: NextConfig = {
     ],
   },
   webpack: (config, { isServer }) => {
+    // Add path alias for @ symbol
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, 'src'),
+    };
+    
     // Ignore warnings for missing modules
     config.ignoreWarnings = [
       /Module not found/,
@@ -29,4 +35,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
