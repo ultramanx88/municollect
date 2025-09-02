@@ -6,9 +6,8 @@ services:
     region: singapore
     buildCommand: |
       npm install --force
-      cd apps/frontend && npm install --force
-      cd apps/frontend && npm run build
-    startCommand: cd apps/frontend && npm start
+      npm run build:frontend
+    startCommand: npm run start:frontend
     envVars:
       - key: NODE_ENV
         value: production
