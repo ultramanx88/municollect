@@ -5,10 +5,9 @@ services:
     env: node
     region: singapore
     buildCommand: |
-      npm install
+      npm install --force
       cd apps/frontend
-      rm -f package-lock.json
-      npm install
+      npm install --force
       npm run build
     startCommand: cd apps/frontend && npm start
     envVars:
